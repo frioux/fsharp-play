@@ -6,7 +6,8 @@ type CEO(name) =
    inherit Human(name)
    member x.Title() = sprintf "CEO: %s" name
 
-let print_title (p : Human) = printfn "%s" (p.Title ())
+let print_title ( p : ^T when ^T : (member Title : unit -> string)) =
+   printfn "%s" (p.Title ())
 
 print_title (Human("frew"))
 print_title (CEO("frew"))
